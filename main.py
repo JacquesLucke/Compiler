@@ -1,11 +1,17 @@
 import simplify
 
 def Translate(fileName):
+
+    # load all lines from file
     file = open(fileName, "r")
+    lines = []
     for line in file:
-        print(line)
+        lines.append(line)
     file.close()
 
-print(simplify.Line("hallo =  5 + 04 + 'sefs sdf s'"))
+    # prepare lines
+    simplify.Lines(lines)
+    
+    print(lines)
 
 Translate("test.code");
