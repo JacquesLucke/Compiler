@@ -1,4 +1,4 @@
-from util import InsertAtIndex
+from util import ReplaceIndex
 
 def Line(line):
     # find expression end, block starts, block ends; remove whitespaces and tabs
@@ -24,11 +24,17 @@ def Line(line):
                 line = line[:i] + line[(i+1):]
                 i -= 1
             elif line[i] == ";":
-                line = InsertAtIndex(line, "_EE_", i) # for "Expression End"            
+                line = ReplaceIndex(line, "_EE_", i) # for "Expression End"            
             elif line[i] == "{":
-                line = InsertAtIndex(line, "_BS_", i) # for "Block Start"         
+                line = ReplaceIndex(line, "_BS_", i) # for "Block Start"         
             elif line[i] == "}":
-                line = InsertAtIndex(line, "_BE_", i) # for "Block End"
+                line = ReplaceIndex(line, "_BE_", i) # for "Block End"
+            elif line[i] == "(":
+                line = ReplaceIndex(line, "_PS_", i) # for "Parameter Start"         
+            elif line[i] == ")":
+                line = ReplaceIndex(line, "_PE_", i) # for "Parameter End"
+            elif line[i] == "=" and line[i-1] != "=" and line[i+1] != "=":
+                line = ReplaceIndex(line, "_AO_", i) # for "Assign Operator"
         i += 1
 
     # find string starts and ends
@@ -37,15 +43,15 @@ def Line(line):
     while i < len(line):
         if line[i] == waitingFor:
             waitingFor = ""
-            line = InsertAtIndex(line, "_SE_", i) # for "String End"
+            line = ReplaceIndex(line, "_SE_", i) # for "String End"
 
         if waitingFor == "":
             if line[i] == "'":
                 waitingFor = "'"
-                line = InsertAtIndex(line, "_SS_", i) # for "String Start"
+                line = ReplaceIndex(line, "_SS_", i) # for "String Start"
             if line[i] == '"':
                 waitingFor = '"'
-                line = InsertAtIndex(line, "_SS_", i) # for "String Start"
+                line = ReplaceIndex(line, "_SS_", i) # for "String Start"
         i += 1
 
     # remove line breaks

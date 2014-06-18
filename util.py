@@ -1,2 +1,2 @@
-def InsertAtIndex(string, insertion, index):
+def ReplaceIndex(string, insertion, index):
     return string[:index] + insertion + string[(index+1):]
