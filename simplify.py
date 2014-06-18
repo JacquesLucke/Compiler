@@ -29,6 +29,7 @@ def Line(line):
                 line = line[:i] + "_BE_" + line[(i+1):] # for "Block End"
         i += 1
 
+    # find string starts and ends
     i = 0
     waitingFor = ""
     while i < len(line):
