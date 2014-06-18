@@ -15,24 +15,21 @@ def Line(line):
         if newLine[i] == '"' and stringChar == "":
             isString = True
             stringChar = '"'
-
+            
         if not isString:
             if newLine[i] == " ":
                 newLine = newLine[:i] + newLine[(i+1):]
                 i -= 1
-
             elif newLine[i] == "\t":
                 newLine = newLine[:i] + newLine[(i+1):]
-                i -= 1
-                
+                i -= 1 
             elif newLine[i] == ";":
-                newLine = newLine[:i] + "_EE_" + newLine[(i+1):] # for "Expression End"
-                
+                newLine = newLine[:i] + "_EE_" + newLine[(i+1):] # for "Expression End"               
             elif newLine[i] == "{":
-                newLine = newLine[:i] + "_BS_" + newLine[(i+1):] # for "Block Start"
-            
+                 newLine = newLine[:i] + "_BS_" + newLine[(i+1):] # for "Block Start"         
             elif newLine[i] == "}":
                 newLine = newLine[:i] + "_BE_" + newLine[(i+1):] # for "Block End"
+            
         i += 1
 
     # remove line breaks
