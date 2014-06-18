@@ -1,4 +1,4 @@
-import simplify
+import simplify, tree
 
 def Translate(fileName):
 
@@ -12,7 +12,10 @@ def Translate(fileName):
     # prepare lines
     simplify.Lines(lines)
     code = simplify.MakeFullSource(lines)
-    
     print(code)
+    print()
+    print()
+    
+    tree.FindBlocks(code)
 
 Translate("test.code");

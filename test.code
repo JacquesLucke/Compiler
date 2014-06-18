@@ -5,6 +5,32 @@ c = 'sdf;;"';
 a = variable + 50;
 print(a);
 
-for (range(10)){
+for (range(10,20)){
 	print("hallo");	variable = variable + 5;
+	for (range(10,20)){
+		print("hallo");	variable = variable + 5;
+		for (range(10,20)){
+			print("hallo");	variable = variable + 5;
+		}
+	}
+
+	for (range(10,20)){
+		print("hallo");	variable = variable + 5;
+		for (range(10,20)){
+			print("hallo");	variable = variable + 5;
+		}
+		for (range(10,20)){
+			for (range(10,20)){
+				print("hallo");	variable = variable + 5;
+			}
+			print("hallo");	vsdghds;
+		}
+	}
 }
+
+for (range(10,20)){
+		print("hallo");	variable = variable + 5;
+		for (range(10,20)){
+			print("hallo");	variable = variable + 5;
+		}
+	}
