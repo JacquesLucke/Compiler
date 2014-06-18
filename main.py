@@ -1,4 +1,4 @@
-import simplify, tree
+import simplify
 
 def Translate(fileName):
 
