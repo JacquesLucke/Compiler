@@ -1,4 +1,10 @@
-variable = 50
+variable = 50;
+b = "s{g;";
+c = 'sdf;;"';
 
-a = variable + 50
-print(a)
+a = variable + 50;
+print(a);
+
+for (range(10)){
+	print("hallo");	variable = variable + 5;
+}
