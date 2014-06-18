@@ -1,3 +1,5 @@
+from util import InsertAtIndex
+
 def Line(line):
     # find expression end, block starts, block ends; remove whitespaces and tabs
     isString = False
@@ -22,11 +24,11 @@ def Line(line):
                 line = line[:i] + line[(i+1):]
                 i -= 1
             elif line[i] == ";":
-                line = line[:i] + "_EE_" + line[(i+1):] # for "Expression End"               
+                line = InsertAtIndex(line, "_EE_", i) # for "Expression End"            
             elif line[i] == "{":
-                 line = line[:i] + "_BS_" + line[(i+1):] # for "Block Start"         
+                line = InsertAtIndex(line, "_BS_", i) # for "Block Start"         
             elif line[i] == "}":
-                line = line[:i] + "_BE_" + line[(i+1):] # for "Block End"
+                line = InsertAtIndex(line, "_BE_", i) # for "Block End"
         i += 1
 
     # find string starts and ends
@@ -35,15 +37,15 @@ def Line(line):
     while i < len(line):
         if line[i] == waitingFor:
             waitingFor = ""
-            line = line[:i] + "_SE_" + line[(i+1):] # for "String End"
+            line = InsertAtIndex(line, "_SE_", i) # for "String End"
 
         if waitingFor == "":
             if line[i] == "'":
                 waitingFor = "'"
-                line = line[:i] + "_SS_" + line[(i+1):] # for "String Start"
+                line = InsertAtIndex(line, "_SS_", i) # for "String Start"
             if line[i] == '"':
                 waitingFor = '"'
-                line = line[:i] + "_SS_" + line[(i+1):] # for "String Start"
+                line = InsertAtIndex(line, "_SS_", i) # for "String Start"
         i += 1
 
     # remove line breaks
