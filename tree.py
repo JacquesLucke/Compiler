@@ -18,7 +18,6 @@ def FindBlocks(code):
             deep = 1
             nextIndex = index
             while not deep == 0:
-                print(deep)
                 nextStart = code.find("_BS_", nextIndex)
                 nextEnd = code.find("_BE_", nextIndex)
 
