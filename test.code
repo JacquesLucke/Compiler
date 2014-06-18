@@ -1,3 +1,4 @@
 variable = 50
+
 a = variable + 50
 print(a)

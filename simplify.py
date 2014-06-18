@@ -20,5 +20,10 @@ def Line(line):
     return newLine
 
 def Lines(lines):
-    for i in range(0, len(lines)):
+    i = 0
+    while i < len(lines):
         lines[i] = Line(lines[i])
+        if lines[i] == "":
+            del lines[i]
+        else:
+            i += 1
